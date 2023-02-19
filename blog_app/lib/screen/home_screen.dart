@@ -3,7 +3,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class HomeScreen extends StatelessWidget {
   WebViewController? controller;
-  final homeUrl = 'https://threemonths.shop/api/schema/swagger-ui/#/';
+  final homeUrl = 'http://threemonths.net/'; //'https://threemonths.shop/api/schema/swagger-ui/#/'
 
   HomeScreen({Key? key}) : super(key: key);
 
@@ -15,8 +15,8 @@ class HomeScreen extends StatelessWidget {
           title: Text(
             'threemonths',
             style: TextStyle(
-              fontSize: 20,
-              fontFamily: 'Poppins',
+              fontSize: 30,
+              fontFamily: 'BMJUA',
               fontWeight: FontWeight.w400,
               color: Colors.brown
             ),
@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
                   if (controller == null) {
                     return;
                   }
-                  controller?.loadUrl('https://github.com/tbhumblestar');
+                  controller?.loadUrl('http://threemonths.net/');
                 },
                 icon: Icon(
                   Icons.home,
