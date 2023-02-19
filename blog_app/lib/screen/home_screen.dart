@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+final homeUrl = Uri.parse('http://threemonths.net/');
 class HomeScreen extends StatelessWidget {
-  WebViewController? controller;
-  final homeUrl = 'http://threemonths.net/'; //'https://threemonths.shop/api/schema/swagger-ui/#/'
-
+  WebViewController controller = WebViewController()
+  ..setJavaScriptMode(JavaScriptMode.unrestricted)
+  ..loadRequest(homeUrl);
   HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -24,10 +25,7 @@ class HomeScreen extends StatelessWidget {
           actions: [
             IconButton(
                 onPressed: () {
-                  if (controller == null) {
-                    return;
-                  }
-                  controller?.loadUrl('http://threemonths.net/');
+                  controller.loadRequest(homeUrl);
                 },
                 icon: Icon(
                   Icons.home,
@@ -35,12 +33,9 @@ class HomeScreen extends StatelessWidget {
                 ))
           ],
         ),
-        body: WebView(
-          onWebViewCreated: (WebViewController controller) {
-            this.controller = controller;
-          },
-          initialUrl: homeUrl,
-          javascriptMode: JavascriptMode.unrestricted,
-        ));
+        body: WebViewWidget(
+          controller: controller,
+        ),
+    );
   }
 }
